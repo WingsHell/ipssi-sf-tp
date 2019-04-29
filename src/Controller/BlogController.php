@@ -1,20 +1,21 @@
 <?php
 
 declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Comment;
-use App\Form\ArticlesType;
 use App\Form\CommentFormType;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
-// Include paginator interface
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+// Include paginator interface
 
 /**
  * Class BlogController
@@ -28,7 +29,7 @@ class BlogController extends AbstractController
      * @param PaginatorInterface $paginator
      * @return Response
      */
-    public function index(Request $request, PaginatorInterface $paginator) :Response
+    public function index(Request $request, PaginatorInterface $paginator): Response
     {
 
         $em = $this->getDoctrine()->getManager();
@@ -65,62 +66,17 @@ class BlogController extends AbstractController
         /** @var CommentRepository $commentRepository */
         $commentRepository = $this->getDoctrine()->getRepository(Comment::class);
         $comments = $commentRepository->findByArticleId($id);
-
-           /*$newCommentForm = $this->createForm(CommentFormType::class);
-        $newCommentForm->handleRequest($request);
-        if($newCommentForm->isSubmitted() && $newCommentForm->isValid()) {
+        //dd($comments);
+        $commentForm = $this->createForm(CommentFormType::class);
+        $commentForm->handleRequest($request);
+        if ($commentForm->isSubmitted() && $commentForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
-
-            /** @var CommentRepository $commentRepository */
-            /*$commentRepository = $this->getDoctrine()->getRepository(Comment::class);
-
-            $comments = $commentRepository->findByArticleId($id);
-
-            foreach ($comments as $comment)
-            {
-
-            }
-
-            $em->persist($newCommentForm->getData());
+            $em->persist($commentForm->getData());
             $em->flush();
-            $isOk = true;
-        }*/
+        }
         return $this->render('ArticleController/view.html.twig', [
             'article' => $article,
             'comments' => $comments,
         ]);
     }
 }
-
-
-
-
-/*public function index(Request $request, PaginatorInterface $paginator)
-{
-    // Retrieve the entity manager of Doctrine
-    $em = $this->getDoctrine()->getManager();
-
-    // Get some repository of data, in our case we have an Appointments entity
-    $appointmentsRepository = $em->getRepository(Appointments::class);
-
-    // Find all the data on the Appointments table, filter your query as you need
-    $allAppointmentsQuery = $appointmentsRepository->createQueryBuilder('p')
-        ->where('p.status != :status')
-        ->setParameter('status', 'canceled')
-        ->getQuery();
-
-    // Paginate the results of the query
-    $appointments = $paginator->paginate(
-    // Doctrine Query, not results
-        $allAppointmentsQuery,
-        // Define the page parameter
-        $request->query->getInt('page', 1),
-        // Items per page
-        5
-    );
-
-    // Render the twig view
-    return $this->render('default/index.html.twig', [
-        'appointments' => $appointments
-    ]);
-}*/

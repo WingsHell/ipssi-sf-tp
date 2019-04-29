@@ -1,63 +1,63 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-        <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-        <link rel="stylesheet" type="text/css" href="{{ asset('fontAwesome/css/all.min..css') }}">
-        <script src="{{ asset('fontAwesome/js/all.min.js') }}"></script>
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-            <link rel="stylesheet" type="text/css" href="{{ asset('ui/main.css') }}">
-            <link rel="stylesheet" type="text/css" href="{{ asset('ui/css/header.css') }}">
-            <link rel="stylesheet" type="text/css" href="{{ asset('ui/css/footer.css') }}">
-        {% endblock %}
-    </head>
-    <body>
-        {% block header %}
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0" id="navbar-collapse1">
-                    <ul class="navbar-nav ml-auto text-center">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/dashboard"><span class="header-link">Dashboard</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/"><span class="header-link">Blog</span></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="mx-auto my-2 order-0 order-md-1 position-relative">
-                    <a class="mx-auto" href="#">
-                        <img src={{ asset('img/docker.png') }} class="rounded-circle">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2" id="navbar-collapse2">
-                    <ul class="navbar-nav mr-auto text-center">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login"><span class="header-link">Connection</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/signUp"><span class="header-link">Inscription</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('fontAwesome/css/all.min..css') }}">
+    <script src="{{ asset('fontAwesome/js/all.min.js') }}"></script>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('ui/main.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('ui/css/header.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('ui/css/footer.css') }}">
+    {% endblock %}
+</head>
+<body>
+{% block header %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0" id="navbar-collapse1">
+            <ul class="navbar-nav ml-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard"><span class="header-link">Dashboard</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><span class="header-link">Blog</span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="mx-auto my-2 order-0 order-md-1 position-relative">
+            <a class="mx-auto" href="#">
+                <img src={{ asset('img/docker.png') }} class="rounded-circle">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2" id="navbar-collapse2">
+            <ul class="navbar-nav mr-auto text-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="/login"><span class="header-link">Connexion</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signUp"><span class="header-link">Subscribe</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
 
-        {% block body %} {% endblock %}
-        {% block javascripts %}{% endblock %}
+{% block body %} {% endblock %}
+{% block javascripts %}{% endblock %}
 
 
-        {% block footer %}
-            <nav class="navbar navbar-dark bg-dark mt-5">
-                <div class="navbar-expand m-auto navbar-text">
-                    Docker Php Symfony Project
-                </div>
-            </nav>
-        {% endblock %}
+{% block footer %}
+    <nav class="navbar navbar-dark bg-dark mt-5">
+        <div class="navbar-expand m-auto navbar-text">
+            Docker Php Symfony Project
+        </div>
+    </nav>
+{% endblock %}
 
-    </body>
+</body>
 </html>
