@@ -32,6 +32,7 @@ class BlogController extends AbstractController
     public function index(Request $request, PaginatorInterface $paginator): Response
     {
 
+
         $em = $this->getDoctrine()->getManager();
 
         /** @var ArticleRepository $repository */
@@ -66,10 +67,10 @@ class BlogController extends AbstractController
         /** @var CommentRepository $commentRepository */
         $commentRepository = $this->getDoctrine()->getRepository(Comment::class);
         $comments = $commentRepository->findByArticleId($id);
-        //dd($comments);
         $commentForm = $this->createForm(CommentFormType::class);
         $commentForm->handleRequest($request);
         if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+            dd($comments);
             $em = $this->getDoctrine()->getManager();
             $em->persist($commentForm->getData());
             $em->flush();

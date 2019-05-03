@@ -3,10 +3,10 @@
 {% block body %}
     {% if isOk %}
         <div class="alert alert-dismissible alert-success">
-            <h2>L'article a bien été créer</h2>
+            <h2>The artcile have benn created succefully!</h2>
         </div>
     {%  endif %}
-        <h2 style="text-align: center">Ajouter un article</h2>
+        <h2 style="text-align: center">Add an article</h2>
         {{ form_start(articleForm) }}
         {{ form_row(articleForm.title, {
             'label': "Title",
